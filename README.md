@@ -3,6 +3,8 @@ LLMPromptOptimizer helps you optimize your prompts to get the best possible resp
 
 🎉 How does it work? To use the tool out-of-the box, simply configure your desired input and settings values in the `config.js` file. Using the Langchain library, you can choose which AI model to use and its settings, which input files to fetch, and how to print the results.
 
+If you want to use the tool out of the box, start out by setting an environment variable `OPENAI_API_KEY` to an OpenAI API key. You can set it in your PATH and it will be accessed automatically.
+
 Here is how to use the tool when you have configured the `config.js` file:
 
 1. First, run `node createOutputs.js` to generate the outputs for each prompt pair.
