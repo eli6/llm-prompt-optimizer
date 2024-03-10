@@ -1,4 +1,8 @@
 /prompts/*
+!/prompts/system1.txt
+!/prompts/user1.txt
+!/prompts/user2.txt
+!/prompts/system2.txt
 configQuiz.js
 config_old.js
 helpers.js
