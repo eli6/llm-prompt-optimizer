@@ -1,4 +1,4 @@
-/prompts*
+/prompts/*
 configQuiz.js
 config_old.js
 helpers.js
