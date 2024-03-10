@@ -66,15 +66,34 @@ const processObjects = (objects) => {
 };
 
 const displayResults = (resultsMap) => {
-  console.log('Summary of Responses:\n');
-  console.log('========================================\n');
+
+
+  const data2 = [];
   resultsMap.forEach((value, key) => {
+
     const total = value.y + value.n;
+
     const percentageY = total > 0 ? (value.y / total) * 100 : 0;
-    prettyConsole.print('magenta', '',`Prompt ${key}: [${promptPairs[key-1][0] + "," + promptPairs[key-1][1] + JSON.stringify(promptPairs[key-1][2])}`);
-    prettyConsole.print('green', '',`Scores: Yes: ${value.y}, No: ${value.n}, Yes%: ${percentageY.toFixed(2)}%`);
+
+    //create object with prompt info:
+    const promptInfo = {
+        prompt: key,
+        files: promptPairs[key-1][0] + "," + promptPairs[key-1][1],
+        yes: value.y,
+        no: value.n,
+        percentageYes: percentageY.toFixed(2) + '%'
+    }
+
+    data2.push(promptInfo);
+
+    // const total = value.y + value.n;
+    // const percentageY = total > 0 ? (value.y / total) * 100 : 0;
+    // prettyConsole.print('magenta', '',`Prompt ${key}: [${promptPairs[key-1][0] + "," + promptPairs[key-1][1] + JSON.stringify(promptPairs[key-1][2])}`);
+    // prettyConsole.print('green', '',`Scores: Yes: ${value.y}, No: ${value.n}, Yes%: ${percentageY.toFixed(2)}%`);
 
 });
+
+  prettyConsole.tableWithColorPrefix('Cyan', 'Scores', data2)
   console.log('========================================\n');
 };
 

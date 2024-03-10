@@ -9,16 +9,12 @@ Here is how to use the tool when you have configured the `config.js` file:
 2. Then, run `node resultAnalyser.js` to see each result from the prompts in turn. You can say y/n to each result and see the score for each prompt pair at the end! 📊
 
     ```console
-    Prompt 2: [system2.txt,user2.txt{"input":"What is NASA?"}
-
-
-    Scores: Yes: 0, No: 3, Yes%: 0.00%
-
-
-    Prompt 1: [system1.txt,user1.txt{"input":"What is NASA?"}
-
-
-    Scores: Yes: 3, No: 0, Yes%: 100.00%
+    ┌─────────┬────────┬─────────────────────────┬─────┬────┬───────────────┐
+    │ (index) │ prompt │ files                   │ yes │ no │ percentageYes │
+    ├─────────┼────────┼─────────────────────────┼─────┼────┼───────────────┤
+    │ 0       │ 1      │ 'system1.txt,user1.txt' │ 3   │ 0  │ '100.00%'     │
+    │ 1       │ 2      │ 'system2.txt,user2.txt' │ 1   │ 2  │ '33.33%'      │
+    └─────────┴────────┴─────────────────────────┴─────┴────┴───────────────┘
     ```
 
 🤝 Some key features of LLMPromptOptimizer include:

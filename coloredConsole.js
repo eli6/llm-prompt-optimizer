@@ -23,6 +23,11 @@ class ColoredConsole {
         const colorCode = this.colors[color] || this.colors['white']; // Default to white if color not found
         console.log(`${colorCode}${prefix}${message}${this.colors['reset']}`);
     }
+
+    tableWithColorPrefix(color, prefix, tableData) {
+        this.print(color, prefix, ''); // Print the colored prefix as a section header
+        console.table(tableData); // Then print the table
+    }
 }
 
 export { ColoredConsole };
