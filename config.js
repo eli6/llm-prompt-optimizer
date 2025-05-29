@@ -5,7 +5,7 @@ import { StringOutputParser } from "@langchain/core/output_parsers"
 
 //configure which AI model to use for each prompt. Create one or many models and pass to the promptPairs below.
 const aiModel= new ChatOpenAI({
- // modelName: "gpt-4",
+    modelName: "gpt-4o-mini",
  // temperature: 0,
 });
 
@@ -25,8 +25,8 @@ export const outputParser = new StringOutputParser();
 
 // name/index of prompt, system message file, user message file
 export const promptPairs = [
-    ['system1.txt', 'user1.txt', promptInput1, aiModel],
-    ['system2.txt', 'user2.txt', promptInput2, aiModel],
+    ['system1.txt', 'user1.txt', promptInput1, aiModel, "world class writer"],
+    ['system2.txt', 'user2.txt', promptInput2, aiModel, "confused child"],
 ]
 
 

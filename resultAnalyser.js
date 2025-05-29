@@ -41,7 +41,7 @@ const processObjects = (objects) => {
 
         prettyConsole.print('cyan', '', '\u2665  Do you approve (y/n)?:')
 
-        const input = await promptUser('');
+        const input = await promptUser('')
 
 
         if (!resultsMap.has(object.prompt)) {
@@ -70,7 +70,7 @@ const displayResults = (resultsMap) => {
 
   const data2 = [];
   resultsMap.forEach((value, key) => {
-
+    
     const total = value.y + value.n;
 
     const percentageY = total > 0 ? (value.y / total) * 100 : 0;
@@ -78,7 +78,7 @@ const displayResults = (resultsMap) => {
     //create object with prompt info:
     const promptInfo = {
         prompt: key,
-        files: promptPairs[key-1][0] + "," + promptPairs[key-1][1],
+        files: promptPairs.find(pair => pair[4] === key)[0] + "," + promptPairs.find(pair => pair[4] === key)[1],
         yes: value.y,
         no: value.n,
         percentageYes: percentageY.toFixed(2) + '%'

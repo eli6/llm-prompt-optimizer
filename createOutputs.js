@@ -29,24 +29,31 @@ const createPromptFromFiles = (systemFilePath, userFilePath) => {
 
 (async () => {
 
-    const results = [];
-    let counter = 1;
+    const numberOfLoops = 3;
+
+    const promises = []
+
+
 
     //loop prompt pairs:
-    for (const [systemFile, userFile, promptInput, aiModel] of promptPairs) {
+    for (const [systemFile, userFile, promptInput, aiModel, promptName] of promptPairs) {
         const prompt = ChatPromptTemplate.fromMessages(createPromptFromFiles(systemFile, userFile))
 
         const llmChain = prompt.pipe(aiModel).pipe(outputParser);
 
-        for (let i = 0; i < 3; i++) {
-            const result = await llmChain.invoke(promptInput)
-            console.log(result)
-            results.push({result : JSON.stringify(result), prompt: counter})
+        for (let i = 0; i < numberOfLoops; i++) {
+
+            const packagePrompt = async (promptInput, promptName) => {
+              const result = await llmChain.invoke(promptInput)
+              return {result : JSON.stringify(result), prompt: promptName}
+            }
+
+            promises.push(packagePrompt(promptInput, promptName));
         }
 
-        counter++;
     }
 
+    const results = await Promise.all(promises);
 
     //save result to a json file as an object with { result:, prompt: 1}:
     fs.writeFileSync('output.json', JSON.stringify(results, null, 2))
